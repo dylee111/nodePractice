@@ -28,16 +28,16 @@ var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit: 10,
     host: 3306,
-    user: 'DB USER',
-    password: 'DB USER PWD',
-    database: 'DB NAME'
+    user: 'dy',
+    password: '7648',
+    database: 'test_db'
 });
 
 app.get('/db', function (req, res) {
     pool.getConnection(function (err, connection) {
         if(err) throw err;
 
-        connection.query("SELECT * FROM BASIC_USER ", function (error, results, fields) {
+        connection.query("SELECT * FROM TEST ", function (error, results, fields) {
             res.send(JSON.stringify(results));
             console.log("result = ", results);
             connection.release();
